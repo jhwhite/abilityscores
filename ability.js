@@ -23,6 +23,31 @@ var remainingPoints = function(val)
 
 var calculateRacials = function()
 {
+	var check = $('td#racials').html();
+	console.log(check.length);
+	if(check.length == 83)
+	{
+		var rstr = parseInt($('input#otherSTR').val());
+		var rdex = parseInt($('input#otherDEX').val());
+		var rcon = parseInt($('input#otherCON').val());
+		var rint = parseInt($('input#otherINT').val());
+		var rwis = parseInt($('input#otherWIS').val());
+		var rcha = parseInt($('input#otherCHA').val());
+	}
+
+	else {
+		/**************************************************************
+		Gets the value of the racial modifier (Racial Trait)
+		**************************************************************/
+		//console.log($('td#racials').html());
+		var rstr = parseInt($('span#racialStr').text());
+		var rdex = parseInt($('span#racialDex').text());
+		var rcon = parseInt($('span#racialCon').text());
+		var rint = parseInt($('span#racialInt').text());
+		var rwis = parseInt($('span#racialWis').text());
+		var rcha = parseInt($('span#racialCha').text());
+	}
+
 	/*************************************************************
 	Gets the value of the spinner (Points)
 	*************************************************************/
@@ -33,15 +58,7 @@ var calculateRacials = function()
 	var wisP = parseInt($('#spinnerWIS').spinner("value"));
 	var chaP = parseInt($('#spinnerCHA').spinner("value"));
 
-	/**************************************************************
-	Gets the value of the racial modifier (Racial Trait)
-	**************************************************************/
-	var rstr = parseInt($('span#racialStr').text());
-	var rdex = parseInt($('span#racialDex').text());
-	var rcon = parseInt($('span#racialCon').text());
-	var rint = parseInt($('span#racialInt').text());
-	var rwis = parseInt($('span#racialWis').text());
-	var rcha = parseInt($('span#racialCha').text());
+
 
 	/*************************************************************
 	Actual Points = Points + Racial Trait
@@ -82,13 +99,24 @@ var calculateRacials = function()
 
 var racialMod = function(race)
 {
-	if (race=="human" || race=="horc" || race=="helf") {
+	if(race=="other")
+	{
+		$('td#racials').html('<input size="3" id="otherSTR" value="0" onchange="javascript: calculateRacials();" />');
+		$('td#raciald').html('<input size="3" id="otherDEX" value="0" onchange="javascript: calculateRacials();" />');
+		$('td#racialc').html('<input size="3" id="otherCON" value="0" onchange="javascript: calculateRacials();" />');
+		$('td#raciali').html('<input size="3" id="otherINT" value="0" onchange="javascript: calculateRacials();" />');
+		$('td#racialw').html('<input size="3" id="otherWIS" value="0" onchange="javascript: calculateRacials();" />');
+		$('td#racialcha').html('<input size="3" id="otherCHA" value="0" onchange="javascript: calculateRacials();" />');
+
+	}
+	else if (race=="human" || race=="horc" || race=="helf") {
 		$('td#racials').html('<input type="radio" name="plusTwo" value="s" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialStr"> 0</span>');
 		$('td#raciald').html('<input type="radio" name="plusTwo" value="d" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialDex"> 0</span>');
 		$('td#racialc').html('<input type="radio" name="plusTwo" value="c" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialCon"> 0</span>');
 		$('td#raciali').html('<input type="radio" name="plusTwo" value="i" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialInt"> 0</span>');
 		$('td#racialw').html('<input type="radio" name="plusTwo" value="w" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialWis"> 0</span>');
-		$('td#racialcha').html('<input type="radio" name="plusTwo" value="ch" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialCha"> 0</span>');		
+		$('td#racialcha').html('<input type="radio" name="plusTwo" value="ch" onclick="javascript: setSomeRacials(this.value);"></input> <span class="toChange" id="racialCha"> 0</span>');
+		calculateRacials();
 	}// end if statement
 	else {
 		switch(race)
@@ -128,25 +156,7 @@ var racialMod = function(race)
 				$('td#racialw').html('<span class="toChange" id="racialWis"> 0</span>');
 				$('td#racialcha').html('<span class="toChange" id="racialCha"> 2</span>');
 				break;
-	/*
-			case("helf"):
-				$('span#racialStr').text(0);
-				$('span#racialDex').text(0);
-				$('span#racialCon').text(0);
-				$('span#racialInt').text(0);
-				$('span#racialWis').text(0);
-				$('span#racialCha').text(0);
-				break;
 
-			case("horc"):
-				$('span#racialStr').text(0);
-				$('span#racialDex').text(0);
-				$('span#racialCon').text(0);
-				$('span#racialInt').text(0);
-				$('span#racialWis').text(0);
-				$('span#racialCha').text(0);
-				break;
-	*/
 			case("half"): //+2 Dexterity, +2 Charisma, –2 Strength
 				$('td#racials').html('<span class="toChange" id="racialStr"> -2</span>');
 				$('td#raciald').html('<span class="toChange" id="racialDex"> 2</span>');
@@ -155,20 +165,9 @@ var racialMod = function(race)
 				$('td#racialw').html('<span class="toChange" id="racialWis"> 0</span>');
 				$('td#racialcha').html('<span class="toChange" id="racialCha"> 2</span>');
 				break;
-				/*
-			case("human"):
-				$('span#racialStr').text(0);
-				$('span#racialDex').text(0);
-				$('span#racialCon').text(0);
-				$('span#racialInt').text(0);
-				$('span#racialWis').text(0);
-				$('span#racialCha').text(0);
-				break;
-				*/
 		}//end switch
+		calculateRacials();
 	}//end else
-	
-	calculateRacials();
 }; //end function
 
 var setSomeRacials = function(value)
