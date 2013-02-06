@@ -24,7 +24,6 @@ var remainingPoints = function(val)
 var calculateRacials = function()
 {
 	var check = $('td#racials').html();
-	console.log(check.length);
 	if(check.length == 83)
 	{
 		var rstr = parseInt($('input#otherSTR').val());
