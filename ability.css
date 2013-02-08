@@ -41,7 +41,7 @@ img {
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 25px;
-	width: 960px;
+	width: 904px;
 }
 
 footer {
@@ -133,4 +133,9 @@ td {
 
 td.abilityName {
 	text-align: left;
+}
+
+td.ad {
+  border-top: 5px solid;
+  margin: 0;
 }
