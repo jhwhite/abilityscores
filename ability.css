@@ -10,7 +10,8 @@ body{
 #app {
 	margin-left: auto;
 	margin-right: auto;
-	width: 60%;
+	width: 90%;
+	max-width: 904px;
 }
 
 header {
