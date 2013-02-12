@@ -46,12 +46,33 @@
 	</head>
 
 	<body>
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 		<div class="3sections" id="app">
             <header>
                 <img src="images/pathfinder.png">
+            <!-- FACEBOOK SOCIAL LIKE -->
+            <div class="fb-like" data-href="http://www.jody-white.com/pathfinder-ability-score-calculator/" data-send="false" data-width="250" data-show-faces="false" data-font="verdana"></div>
+
+            <!-- TWITTER SOCIAL LIKE -->
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://bit.ly/XFqio3" data-text="Pathfinder Ability Score Calculator. Simplify your gaming!" data-via="jwjody">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+            <!-- GOOGLE +1 SOCIAL LIKE -->
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <g:plusone></g:plusone>
                 <h1>Pathfinder RPG Ability Score Calculator</h1>
             </header>
-			
+
+
+
 			<div id="radio">
 			    <input type="radio" id="radio1" name="radio" value="10"/><label for="radio1">Low Fantasy: 10</label>
     			<input type="radio" id="radio2" name="radio" value="15"/><label for="radio2">Standard Fantasy: 15</label>
