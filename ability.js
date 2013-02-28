@@ -13,7 +13,7 @@ var remainingPoints = function(val)
 {
 	var total = 0;
 	$('.points').each(function(){
-		total = total + parseInt($(this).text());
+		total += parseInt($(this).text());
 	});
 	total = val - (total);
 	$('body div#app div#scores table tbody td#remaining').text(total);
@@ -24,6 +24,10 @@ var calculateRacials = function()
 	var check = $('td#racials').html();
 	if(check.length == 83)
 	{
+		/***************************************************************
+		gets the value of "other" stats when Racial is set to Other
+		and stores them in variables
+		****************************************************************/
 		var rstr = parseInt($('input#otherSTR').val());
 		var rdex = parseInt($('input#otherDEX').val());
 		var rcon = parseInt($('input#otherCON').val());
@@ -36,7 +40,6 @@ var calculateRacials = function()
 		/**************************************************************
 		Gets the value of the racial modifier (Racial Trait)
 		**************************************************************/
-		//console.log($('td#racials').html());
 		var rstr = parseInt($('span#racialStr').text());
 		var rdex = parseInt($('span#racialDex').text());
 		var rcon = parseInt($('span#racialCon').text());
@@ -54,8 +57,6 @@ var calculateRacials = function()
 	var int1P = parseInt($('#spinnerINT').spinner("value"));
 	var wisP = parseInt($('#spinnerWIS').spinner("value"));
 	var chaP = parseInt($('#spinnerCHA').spinner("value"));
-
-
 
 	/*************************************************************
 	Actual Points = Points + Racial Trait
@@ -226,7 +227,6 @@ var setSomeRacials = function(value)
 			break;
 	}
 	calculateRacials();
-
 };
 
 var resetApp = function()
@@ -243,7 +243,6 @@ var resetApp = function()
  $(document).ready(function() {
 
  	$( "#radio" ).buttonset();
- 	//$("button").button();
 
  	$('#reset').click(function(){
  		resetApp();
@@ -257,20 +256,8 @@ var resetApp = function()
 	  		val = prompt("Number of points?");
 	  	};
 	  	$('div#scores').slideDown('slow');
-	  	//resetApp();
 	  	remainingPoints(val);
 	});
-
-	/*
-	$('.thisSpinner').spinner({ max: 18, min: 7});
-	$('.thisSpinner').bind("spinstop", function(){
-		var strength = calculateAbilities(this.value);
- 		$("#strMod").html(strength[0]);
- 		$("#strPts").html(strength[1]);
- 		remainingPoints();
-	});
-	 */
-
 
  	$("#spinnerSTR").spinner({ max: 18, min: 7}).val(10);
  	$("#spinnerSTR").bind("spinstop", function(){
@@ -325,5 +312,4 @@ var resetApp = function()
  		remainingPoints(val);
  		calculateRacials();
  	});
-
  });
