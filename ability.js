@@ -11,13 +11,11 @@ var calculateAbilities = function(score)
 
 var remainingPoints = function(val)
 {
-	var str = parseInt($('span#strPts').text());
-	var dex = parseInt($('span#dexPts').text());
-	var con = parseInt($('span#conPts').text());
-	var int1 = parseInt($('span#intPts').text());
-	var wis = parseInt($('span#wisPts').text());
-	var cha = parseInt($('span#chaPts').text());
-	var total = val - (str + dex + con + int1 + wis + cha);
+	var total = 0;
+	$('.points').each(function(){
+		total = total + parseInt($(this).text());
+	});
+	total = val - (total);
 	$('body div#app div#scores table tbody td#remaining').text(total);
 };
 
